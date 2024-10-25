@@ -1,4 +1,4 @@
-# Split CSV
+# Chunk CSV
 
 ## Overview
 A quick and dirty command line tool that splits a source CSV into N chunks and puts the chunks in a directory of choice
