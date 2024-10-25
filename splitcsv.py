@@ -4,9 +4,9 @@ import argparse
 
 def init():
     parser = argparse.ArgumentParser()
-    parser.add_argument('csv', help='Absolute path to input CSV')
+    parser.add_argument('csvpath', help='Absolute path to input CSV')
+    parser.add_argument('outdir', help='Absolute path to output directory')
     parser.add_argument('chunks', type=int, help='Number of chunks')
-    parser.add_argument('outpath', help='Absolute path to output directory')
     return parser.parse_args()
 
 def read(path):
