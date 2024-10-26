@@ -17,14 +17,14 @@ def chunk(df, num_chunks):
     print(f'Initial Row Count: {num_rows}')
     rows_per_chunk = math.ceil(num_rows / num_chunks)
     print(f'Expected Row Count Per Chunk: {rows_per_chunk}')
-    starting_chunk = 0
+    row = 0
     chunks = []
     chunk = 1
-    while starting_chunk < num_rows:
-        current_range_max = min(starting_chunk + rows_per_chunk, num_rows)
-        print(f'Chunk {chunk}: {current_range_max - starting_chunk} rows')
-        chunks.append(df.iloc[starting_chunk:current_range_max])
-        starting_chunk = current_range_max
+    while row < num_rows:
+        range_max = min(row + rows_per_chunk, num_rows)
+        print(f'Chunk {chunk}: {range_max - row} rows')
+        chunks.append(df.iloc[row:range_max])
+        row = range_max
         chunk += 1
     return chunks
         
@@ -40,7 +40,6 @@ def write(chunks, output_directory):
         print(f'An error occured writing to \'{output_directory}\'')
 
 def main():
-    print('Parsing input...')
     args = init()
     print('Chunking...')
     chunks = chunk(read(args.csv), args.chunks)
