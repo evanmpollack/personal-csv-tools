@@ -1,7 +1,7 @@
 # Chunk CSV
 
 ## Overview
-A quick and dirty command line tool that splits a source CSV into N chunks and puts the chunks in a directory of choice
+A quick and dirty script that splits a source CSV into N chunks and puts the chunks in a directory of choice
 
 ## Use
 1. Install Python 3.10+
