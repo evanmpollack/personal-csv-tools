@@ -29,23 +29,25 @@ def chunk(df, num_chunks):
     return chunks
         
 def write(chunks, output_directory):
+    for index, chunk in enumerate(chunks, start=1):
+        chunk.to_csv(f'{output_directory}/CSVChunk_{index}.csv', index=False)
+
+def main():
     try:
-        for index, chunk in enumerate(chunks, start=1):
-            chunk.to_csv(f'{output_directory}/CSVChunk_{index}.csv', index=False)
+        args = init()
+        print('Chunking...')
+        chunks = chunk(read(args.csvpath), args.chunks)
+        print('Writing to output directory...')
+        write(chunks, args.outdir)
+        print('Done')
+    except FileNotFoundError:
+        print(f'Cannot find input file {args.csvpath}')
     except FileExistsError:
         print('Cannot write to file that already exists')
     except PermissionError:
-        print(f'You do not have permission to write to \'{output_directory}\'')
+        print(f'You do not have permission to write to \'{args.outdir}\'')
     except:
-        print(f'An error occured writing to \'{output_directory}\'')
-
-def main():
-    args = init()
-    print('Chunking...')
-    chunks = chunk(read(args.csv), args.chunks)
-    print('Writing to output directory...')
-    write(chunks, args.outpath)
-    print('Finished')
+        print('An error occurred')
 
 if __name__ == '__main__':
     main()
