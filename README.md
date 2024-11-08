@@ -1,7 +1,7 @@
-# Chunk CSV
+# Personal CSV Tools
 
 ## Overview
-A quick and dirty script that splits a source CSV into N chunks and puts the chunks in a directory of choice
+A collection of quick and dirty csv tools to automate common tasks. Each were written in about 30 min and are rough around the edges but get the job done.
 
 ## Use
 1. Install Python 3.10+
@@ -20,3 +20,10 @@ python splitcsv.py csvpath outdir chunks
 - csvpath: absolute path to source csv
 - outdir: absolute path to output directory
 - chunks: the number of chunks
+
+```
+python extractcsv.py csvpath outdir [fields...]
+```
+- csvpath: absolute path to source csv
+- outdir: absolute path to output directory
+- fields: column names to extract, separated by space
