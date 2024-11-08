@@ -45,7 +45,7 @@ def main():
     except FileExistsError:
         print('Cannot write to file that already exists')
     except PermissionError:
-        print(f'You do not have permission to write to \'{args.outdir}\'')
+        print(f'You either do not have permission to read from \'{args.csvpath}\' or write to \'{args.outdir}\'')
     except:
         print('An error occurred')
 
